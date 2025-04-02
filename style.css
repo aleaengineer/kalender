@@ -1,0 +1,31 @@
+body {
+    background-image: url('img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.card {
+    background-color: #ffffff63;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.calendar-day {
+    transition: all 0.2s ease;
+}
+.calendar-day:hover {
+    transform: scale(1.05);
+    background-color: #f0f0f0;
+}
+.hijri-date {
+    font-size: 0.7rem;
+    color: #666;
+}
+.today {
+    background-color: #e3f2fd;
+    font-weight: bold;
+}

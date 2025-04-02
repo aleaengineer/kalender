@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="img/site.webmanifest">
+    <title>Kalender Masehi & Hijriyah</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg mx-auto">
+                    <div class="card-header bg-primary-100 text-dark">
+                        <h1 class="h4 mb-0 text-center">Kalender Masehi & Hijriyah</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="monthSelect" class="form-label">Bulan</label>
+                                <select id="monthSelect" class="form-select">
+                                    <option value="0">Januari</option>
+                                    <option value="1">Februari</option>
+                                    <option value="2">Maret</option>
+                                    <option value="3">April</option>
+                                    <option value="4">Mei</option>
+                                    <option value="5">Juni</option>
+                                    <option value="6">Juli</option>
+                                    <option value="7">Agustus</option>
+                                    <option value="8">September</option>
+                                    <option value="9">Oktober</option>
+                                    <option value="10">November</option>
+                                    <option value="11">Desember</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="yearSelect" class="form-label">Tahun</label>
+                                <div class="input-group">
+                                    <input type="number" id="yearSelect" class="form-control" min="1900" max="2100">
+                                    <button class="btn btn-outline-secondary" type="button" id="currentMonthBtn">
+                                        <i class="fas fa-calendar-day"></i> Hari Ini
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <button class="btn btn-outline-primary" id="prevMonthBtn">
+                                <i class="fas fa-chevron-left"></i> Sebelumnya
+                            </button>
+                            <h3 id="currentMonthYear" class="text-center mb-0"></h3>
+                            <button class="btn btn-outline-primary" id="nextMonthBtn">
+                                Selanjutnya <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+
+                        <div class="table-responsive mx-auto">
+                            <table class="table table-bordered text-center">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Minggu</th>
+                                        <th>Senin</th>
+                                        <th>Selasa</th>
+                                        <th>Rabu</th>
+                                        <th>Kamis</th>
+                                        <th>Jumat</th>
+                                        <th>Sabtu</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="calendarBody" class="mx-auto">
+                                    <!-- Calendar will be generated here -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-light rounded">
+                            <h4 class="h5 mb-3">Konversi Tanggal</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Masehi ke Hijriyah</label>
+                                    <div class="input-group">
+                                        <input type="date" id="gregorianDate" class="form-control">
+                                        <button class="btn btn-primary" id="convertToHijri">Konversi</button>
+                                    </div>
+                                    <div id="hijriResult" class="mt-2 p-2 bg-white rounded"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Hijriyah ke Masehi</label>
+                                    <div class="input-group">
+                                        <input type="number" id="hijriDay" class="form-control" placeholder="Hari" min="1" max="30">
+                                        <select id="hijriMonth" class="form-select">
+                                            <option value="1">Muharram</option>
+                                            <option value="2">Safar</option>
+                                            <option value="3">Rabiul Awwal</option>
+                                            <option value="4">Rabiul Akhir</option>
+                                            <option value="5">Jumadil Awal</option>
+                                            <option value="6">Jumadil Akhir</option>
+                                            <option value="7">Rajab</option>
+                                            <option value="8">Sya'ban</option>
+                                            <option value="9">Ramadhan</option>
+                                            <option value="10">Shawwal</option>
+                                            <option value="11">Zulkaidah</option>
+                                            <option value="12">Zulhijjah</option>
+                                        </select>
+                                        <input type="number" id="hijriYear" class="form-control" placeholder="Tahun" min="1300" max="1500">
+                                        <button class="btn btn-primary" id="convertToGregorian">Konversi</button>
+                                    </div>
+                                    <div id="gregorianResult" class="mt-2 p-2 bg-white rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center text-muted">
+                        <small>&copy; 2025 Kalender Masehi & Hijriyah</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Hijri Date Library -->
+    <script src="https://cdn.jsdelivr.net/npm/hijri-converter@2.0.0/dist/umd/hijri-converter.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
